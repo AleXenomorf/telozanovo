@@ -4,47 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Онлайн-программа «Тело заново»</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', 'Open Sans', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #000000;
+            background-color: #ffffff;
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
         }
         h1, h2, h3 {
-            color: #e83f8e;
+            color: #c1a27d;
+            font-weight: 600;
+            text-align: center;
         }
         section {
             margin-bottom: 40px;
             padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #eaeaea;
         }
-        ul {
+        ul, ol {
             padding-left: 20px;
         }
         li {
             margin-bottom: 10px;
         }
+        p {
+            color: #000000;
+            text-align: left;
+        }
         .button {
             display: inline-block;
-            background-color: #e83f8e;
+            background-color: #c1a27d;
             color: white;
             padding: 12px 24px;
             text-decoration: none;
             border-radius: 4px;
-            font-weight: bold;
+            font-weight: 500;
             margin: 10px 5px;
             transition: background-color 0.3s;
+            text-align: center;
         }
         .button:hover {
-            background-color: #c53175;
+            background-color: #a58c6e;
         }
         .testimonial {
-            background-color: #f9f9f9;
+            background-color: #f5f5f5;
             padding: 15px;
-            border-left: 3px solid #e83f8e;
+            border-left: 3px solid #c1a27d;
             margin: 15px 0;
         }
         .pricing-table {
@@ -58,11 +67,49 @@
             text-align: left;
         }
         .pricing-table th {
-            background-color: #f2f2f2;
+            background-color: #f5f5f5;
+            font-weight: 500;
         }
         .bonus {
-            font-weight: bold;
-            color: #e83f8e;
+            font-weight: 500;
+            color: #c1a27d;
+        }
+        .secondary-text {
+            color: #666666;
+        }
+        
+        /* Адаптивные стили */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .button {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+            section {
+                margin-bottom: 30px;
+                padding-bottom: 15px;
+            }
+        }
+        
+        /* Flex-контейнеры */
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        @media (max-width: 480px) {
+            .button-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -70,10 +117,12 @@
     <header>
         <h1>Онлайн-программа «Тело заново»</h1>
         <p>Для женщин, которые хотят восстановить здоровье, силу и фигуру — мягко, без жёстких диет и изнуряющих тренировок.</p>
-        <p>Подходит после родов, при усталости, диастазе, болях в спине и потере энергии.</p>
+        <p class="secondary-text">Подходит после родов, при усталости, диастазе, болях в спине и потере энергии.</p>
         <p>«Ты не обязана быть идеальной, чтобы начать. Ты достойна заботы уже сейчас.»</p>
-        <p>Старт в любой момент</p>
-        <p>Участие из любого города</p>
+        <div class="flex-container">
+            <p>Старт в любой момент</p>
+            <p>Участие из любого города</p>
+        </div>
     </header>
 
     <section id="for-whom">
@@ -112,8 +161,10 @@
             <li>Как провести самодиагностику дома</li>
             <li>Какие упражнения можно, а какие — усугубляют</li>
         </ul>
-        <p>Введи email или нажми кнопку — и получи гайд в Telegram</p>
-        <a href="#" class="button">Получить бесплатный гайд по диастазу</a>
+        <p class="secondary-text">Введи email или нажми кнопку — и получи гайд в Telegram</p>
+        <div class="button-container">
+            <a href="#" class="button">Получить бесплатный гайд по диастазу</a>
+        </div>
     </section>
 
     <section id="free-trial">
@@ -126,7 +177,9 @@
             <li>Подходит даже после родов и при диастазе</li>
             <li>Без прыжков, боли и насилия над телом</li>
         </ul>
-        <a href="#" class="button">Посмотреть бесплатную тренировку изнутри</a>
+        <div class="button-container">
+            <a href="#" class="button">Посмотреть бесплатную тренировку изнутри</a>
+        </div>
     </section>
 
     <section id="participation-format">
@@ -148,7 +201,7 @@
                 <td>30 000 ₸</td>
             </tr>
         </table>
-        <p>После оплаты ты автоматически получаешь ссылку на закрытый Telegram-канал.</p>
+        <p class="secondary-text">После оплаты ты автоматически получаешь ссылку на закрытый Telegram-канал.</p>
     </section>
 
     <section id="testimonials">
@@ -168,7 +221,7 @@
         <h2>Автор программы</h2>
         <p><strong>Татьяна Дорохова</strong></p>
         <p>Женский фитнес-тренер и нутрициолог</p>
-        <p>8+ лет практики, мама, прошедшая непростой путь восстановления после тяжёлых родов</p>
+        <p class="secondary-text">8+ лет практики, мама, прошедшая непростой путь восстановления после тяжёлых родов</p>
         <p>Специализация: женское здоровье, тазовое дно, диастаз, осанка, восстановление энергии, веса и ресурса</p>
         <p>Обучалась у:</p>
         <ul>
@@ -187,12 +240,12 @@
             <li>Получаешь автоматическую ссылку на закрытый Telegram-канал</li>
             <li>Начинаешь — с поддержкой, в мягком темпе, но с мощным результатом</li>
         </ol>
-        <p>Остались вопросы? Напиши мне в Telegram или Instagram — я на связи и помогу выбрать формат под твой запрос</p>
+        <p class="secondary-text">Остались вопросы? Напиши мне в Telegram или Instagram — я на связи и помогу выбрать формат под твой запрос</p>
     </section>
 
     <section id="actions">
         <h2>Кнопки и действия</h2>
-        <div>
+        <div class="button-container">
             <a href="#" class="button">Оплатить участие Light</a>
             <a href="#" class="button">Оплатить участие Pro</a>
             <a href="#" class="button">Получить бесплатный гайд по диастазу</a>

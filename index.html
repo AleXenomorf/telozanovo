@@ -111,6 +111,33 @@
                 flex-direction: column;
             }
         }
+        
+        /* Стили для раздела автора */
+        .author-section {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        .author-photo {
+            width: 200px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .author-info {
+            flex: 1;
+        }
+        
+        @media (max-width: 600px) {
+            .author-section {
+                flex-direction: column;
+            }
+            .author-photo {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
     </style>
 </head>
 <body>
@@ -219,17 +246,22 @@
 
     <section id="author">
         <h2>Автор программы</h2>
-        <p><strong>Татьяна Дорохова</strong></p>
-        <p>Женский фитнес-тренер и нутрициолог</p>
-        <p class="secondary-text">8+ лет практики, мама, прошедшая непростой путь восстановления после тяжёлых родов</p>
-        <p>Специализация: женское здоровье, тазовое дно, диастаз, осанка, восстановление энергии, веса и ресурса</p>
-        <p>Обучалась у:</p>
-        <ul>
-            <li>Михаила Касаткина</li>
-            <li>Любови Жуковской</li>
-            <li>Михаила Соркина</li>
-            <li>Марины Осокиной и др.</li>
-        </ul>
+        <div class="author-section">
+            <img src="IMG_6262.JPG" alt="Татьяна Дорохова" class="author-photo">
+            <div class="author-info">
+                <p><strong>Татьяна Дорохова</strong></p>
+                <p>Женский фитнес-тренер и нутрициолог</p>
+                <p class="secondary-text">8+ лет практики, мама, прошедшая непростой путь восстановления после тяжёлых родов</p>
+                <p>Специализация: женское здоровье, тазовое дно, диастаз, осанка, восстановление энергии, веса и ресурса</p>
+                <p>Обучалась у:</p>
+                <ul>
+                    <li>Михаила Касаткина</li>
+                    <li>Любови Жуковской</li>
+                    <li>Михаила Соркина</li>
+                    <li>Марины Осокиной и др.</li>
+                </ul>
+            </div>
+        </div>
     </section>
 
     <section id="how-to-join">

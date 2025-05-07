@@ -115,26 +115,28 @@
         /* Стили для раздела автора */
         .author-section {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             align-items: flex-start;
         }
         .author-photo {
-            width: 200px;
+            width: 300px;
             height: auto;
             border-radius: 10px;
             object-fit: cover;
+            flex-shrink: 0;
         }
         .author-info {
             flex: 1;
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             .author-section {
                 flex-direction: column;
+                gap: 20px;
             }
             .author-photo {
                 width: 100%;
-                max-width: 300px;
+                max-width: 350px;
                 margin: 0 auto;
             }
         }

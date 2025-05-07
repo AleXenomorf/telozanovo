@@ -159,19 +159,27 @@
             text-align: center;
         }
         .testimonial-image {
-            width: 300px;
+            width: 450px; /* Увеличение на 50% (было 300px) */
             height: auto;
             border-radius: 10px;
             margin: 0 auto 15px;
             display: block;
             object-fit: cover;
+            max-width: 100%;
         }
-        .testimonial-text {
+        .testimonial-comments {
+            margin-top: 30px;
+        }
+        .testimonial-comment {
+            display: none;
             background-color: #f5f5f5;
             padding: 15px;
             border-left: 3px solid #c1a27d;
-            margin: 0 auto;
+            margin: 0 auto 20px;
             max-width: 600px;
+        }
+        .testimonial-comment.active {
+            display: block;
         }
         .slider-nav {
             text-align: center;
@@ -294,44 +302,35 @@
         <div class="testimonials-slider">
             <div class="testimonials-container" id="testimonialsContainer">
                 <div class="testimonial-slide">
-                    <img src="IMG_2603.PNG" alt="Отзыв участницы" class="testimonial-image">
-                    <div class="testimonial-text">
-                        <p>«Наконец-то могу делать зарядку — без боли в пояснице!»</p>
-                    </div>
+                    <img src="telozanovo/IMG_2603.PNG" alt="Результат участницы" class="testimonial-image">
                 </div>
                 <div class="testimonial-slide">
-                    <img src="IMG_3458.PNG" alt="Отзыв участницы" class="testimonial-image">
-                    <div class="testimonial-text">
-                        <p>«Минус 3 см в талии за 3 недели. Не поверила бы, если бы не почувствовала сама!»</p>
-                    </div>
+                    <img src="telozanovo/IMG_3458.PNG" alt="Результат участницы" class="testimonial-image">
                 </div>
                 <div class="testimonial-slide">
-                    <img src="IMG_3459.PNG" alt="Отзыв участницы" class="testimonial-image">
-                    <div class="testimonial-text">
-                        <p>«Я снова чувствую себя красивой — не "должной", а настоящей»</p>
-                    </div>
+                    <img src="telozanovo/IMG_3459.PNG" alt="Результат участницы" class="testimonial-image">
                 </div>
                 <div class="testimonial-slide">
-                    <img src="IMG_4187.PNG" alt="Отзыв участницы" class="testimonial-image">
-                    <div class="testimonial-text">
-                        <p>«После родов думала, что никогда не верну прежнюю форму. Эта программа изменила всё!»</p>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <img src="IMG_4188.PNG" alt="Отзыв участницы" class="testimonial-image">
-                    <div class="testimonial-text">
-                        <p>«Удивительно, как мягкие упражнения могут давать такой результат!»</p>
-                    </div>
-                </div>
-                <div class="testimonial-slide">
-                    <img src="IMG_8530.png" alt="Отзыв участницы" class="testimonial-image">
-                    <div class="testimonial-text">
-                        <p>«Спасибо за программу, которая учитывает особенности женского тела после родов»</p>
-                    </div>
+                    <img src="telozanovo/IMG_8530.png" alt="Результат участницы" class="testimonial-image">
                 </div>
             </div>
             <div class="slider-nav" id="sliderNav">
                 <!-- Точки будут добавлены через JavaScript -->
+            </div>
+        </div>
+
+        <div class="testimonial-comments">
+            <div class="testimonial-comment active" data-index="0">
+                <p>«Наконец-то могу делать зарядку — без боли в пояснице!»</p>
+            </div>
+            <div class="testimonial-comment" data-index="1">
+                <p>«Минус 3 см в талии за 3 недели. Не поверила бы, если бы не почувствовала сама!»</p>
+            </div>
+            <div class="testimonial-comment" data-index="2">
+                <p>«Я снова чувствую себя красивой — не "должной", а настоящей»</p>
+            </div>
+            <div class="testimonial-comment" data-index="3">
+                <p>«Спасибо за программу, которая учитывает особенности женского тела после родов»</p>
             </div>
         </div>
     </section>
@@ -383,6 +382,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('testimonialsContainer');
             const slides = document.querySelectorAll('.testimonial-slide');
+            const comments = document.querySelectorAll('.testimonial-comment');
             const nav = document.getElementById('sliderNav');
             let currentSlide = 0;
             const slideCount = slides.length;
@@ -399,7 +399,7 @@
                 nav.appendChild(dot);
             }
             
-            // Функция переключения слайдов
+            // Функция переключения слайдов и комментариев
             function goToSlide(n) {
                 currentSlide = (n + slideCount) % slideCount;
                 container.style.transform = `translateX(-${currentSlide * 100}%)`;
@@ -410,6 +410,15 @@
                         dot.classList.add('active');
                     } else {
                         dot.classList.remove('active');
+                    }
+                });
+                
+                // Обновляем активный комментарий
+                comments.forEach(comment => {
+                    if (parseInt(comment.dataset.index) === currentSlide) {
+                        comment.classList.add('active');
+                    } else {
+                        comment.classList.remove('active');
                     }
                 });
             }

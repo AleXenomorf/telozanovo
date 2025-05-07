@@ -6,13 +6,292 @@
     <title>Онлайн-программа «Тело заново»</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Все стили остаются точно такими же, как в предыдущем коде */
-        /* ... */
+        body {
+            font-family: 'Roboto', 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            background-color: #ffffff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #c1a27d;
+            font-weight: 600;
+            text-align: center;
+        }
+        section {
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        ul, ol {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        p {
+            color: #000000;
+            text-align: left;
+        }
+        .button {
+            display: inline-block;
+            background-color: #c1a27d;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            margin: 10px 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+        .button:hover {
+            background-color: #a58c6e;
+        }
+        .testimonial {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-left: 3px solid #c1a27d;
+            margin: 15px 0;
+        }
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        .pricing-table th, .pricing-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        .pricing-table th {
+            background-color: #f5f5f5;
+            font-weight: 500;
+        }
+        .bonus {
+            font-weight: 500;
+            color: #c1a27d;
+        }
+        .secondary-text {
+            color: #666666;
+        }
+        
+        /* Адаптивные стили */
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            .button {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+            section {
+                margin-bottom: 30px;
+                padding-bottom: 15px;
+            }
+        }
+        
+        /* Flex-контейнеры */
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        @media (max-width: 480px) {
+            .button-container {
+                flex-direction: column;
+            }
+        }
+        
+        /* Стили для раздела автора */
+        .author-section {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        .author-photo {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        .author-info {
+            flex: 1;
+        }
+        
+        @media (max-width: 700px) {
+            .author-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .author-photo {
+                width: 100%;
+                max-width: 350px;
+                margin: 0 auto;
+            }
+        }
+        
+        /* Стили для слайдера отзывов */
+        .testimonials-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 20px 0;
+        }
+        .testimonials-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .testimonial-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            text-align: center;
+        }
+        .testimonial-image {
+            width: 450px;
+            height: auto;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: cover;
+            max-width: 100%;
+        }
+        .testimonial-comments {
+            margin-top: 30px;
+        }
+        .testimonial-comment {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-left: 3px solid #c1a27d;
+            margin: 0 auto 20px;
+            max-width: 600px;
+        }
+        .slider-nav {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .slider-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .slider-dot.active {
+            background-color: #c1a27d;
+        }
+        
+        @media (max-width: 700px) {
+            .testimonial-image {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- Все предыдущие секции остаются без изменений -->
-    <!-- ... -->
+    <header>
+        <h1>Онлайн-программа «Тело заново»</h1>
+        <p>Для женщин, которые хотят восстановить здоровье, силу и фигуру — мягко, без жёстких диет и изнуряющих тренировок.</p>
+        <p class="secondary-text">Подходит после родов, при усталости, диастазе, болях в спине и потере энергии.</p>
+        <p>«Ты не обязана быть идеальной, чтобы начать. Ты достойна заботы уже сейчас.»</p>
+        <div class="flex-container">
+            <p>Старт в любой момент</p>
+            <p>Участие из любого города</p>
+        </div>
+    </header>
+
+    <section id="for-whom">
+        <h2>Для кого это программа</h2>
+        <p>Эта программа для тебя, если:</p>
+        <ul>
+            <li>После родов висит живот, кривая осанка, болит спина</li>
+            <li>Хочешь вернуть стройность и лёгкость — без диет и насилия над телом</li>
+            <li>Чувствуешь усталость, нет энергии и уверенности в себе</li>
+            <li>Перестала чувствовать себя женщиной — только «мамой»</li>
+            <li>Секс стал механикой, а не источником удовольствия</li>
+            <li>Хочешь снова ощущать связь с телом</li>
+        </ul>
+        <p>Это не только про тренировки. Это про возвращение к себе.</p>
+    </section>
+
+    <section id="program-content">
+        <h2>Что внутри программы</h2>
+        <p>«Тело заново» — это:</p>
+        <ul>
+            <li>Готовый план тренировок (осанка, таз, живот, кора)</li>
+            <li>Видео тренировки в формате повторяй за мной</li>
+            <li>Питание без запретов — восстановление дефицитов и нормализация веса</li>
+            <li>Поддержка и мотивация через Telegram</li>
+            <li>Подсчёт КБЖУ — без срывов</li>
+        </ul>
+        <p class="bonus">Бонусы: чек-листы, шпаргалки, рецепты и PDF-гайды</p>
+    </section>
+
+    <section id="free-guide">
+        <h3>Бесплатный гайд и диагностика диастаза</h3>
+        <p>Хочешь начать с простого?</p>
+        <p>Получи бесплатный гайд по диастазу:</p>
+        <ul>
+            <li>Что это и как понять, есть ли он у тебя</li>
+            <li>Как провести самодиагностику дома</li>
+            <li>Какие упражнения можно, а какие — усугубляют</li>
+        </ul>
+        <p class="secondary-text">Введи email или нажми кнопку — и получи гайд в Telegram</p>
+        <div class="button-container">
+            <a href="#" class="button">Получить бесплатный гайд по диастазу</a>
+        </div>
+    </section>
+
+    <section id="free-trial">
+        <h3>Бесплатная пробная тренировка</h3>
+        <p>Попробуй мой подход до покупки!</p>
+        <p>Тебя ждёт:</p>
+        <ul>
+            <li>Мягкая, но эффективная тренировка на активацию мышц кора и осанку</li>
+            <li>Время: 15 минут</li>
+            <li>Подходит даже после родов и при диастазе</li>
+            <li>Без прыжков, боли и насилия над телом</li>
+        </ul>
+        <div class="button-container">
+            <a href="#" class="button">Посмотреть бесплатную тренировку изнутри</a>
+        </div>
+    </section>
+
+    <section id="participation-format">
+        <h2>Формат участия</h2>
+        <table class="pricing-table">
+            <tr>
+                <th>Формат</th>
+                <th>Что входит</th>
+                <th>Стоимость</th>
+            </tr>
+            <tr>
+                <td>Light</td>
+                <td>Доступ ко всем материалам, видео, инструкциям. Без обратной связи.</td>
+                <td>20 000 ₸</td>
+            </tr>
+            <tr>
+                <td>Pro</td>
+                <td>Всё из Light + проверка отчётов и поддержка 1 раз в неделю.</td>
+                <td>30 000 ₸</td>
+            </tr>
+        </table>
+        <p class="secondary-text">После оплаты ты автоматически получаешь ссылку на закрытый Telegram-канал.</p>
+    </section>
 
     <section id="testimonials">
         <h2>Что говорят участницы</h2>
@@ -64,8 +343,47 @@
         </div>
     </section>
 
-    <!-- Остальные секции остаются без изменений -->
-    <!-- ... -->
+    <section id="author">
+        <h2>Автор программы</h2>
+        <div class="author-section">
+            <img src="IMG_6262.JPG" alt="Татьяна Дорохова" class="author-photo">
+            <div class="author-info">
+                <p><strong>Татьяна Дорохова</strong></p>
+                <p>Женский фитнес-тренер и нутрициолог</p>
+                <p class="secondary-text">8+ лет практики, мама, прошедшая непростой путь восстановления после тяжёлых родов</p>
+                <p>Специализация: женское здоровье, тазовое дно, диастаз, осанка, восстановление энергии, веса и ресурса</p>
+                <p>Обучалась у:</p>
+                <ul>
+                    <li>Михаила Касаткина</li>
+                    <li>Любови Жуковской</li>
+                    <li>Михаила Соркина</li>
+                    <li>Марины Осокиной и др.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-to-join">
+        <h2>Как попасть в программу</h2>
+        <ol>
+            <li>Выбираешь формат: Light или Pro</li>
+            <li>Оплачиваешь удобным способом</li>
+            <li>Получаешь автоматическую ссылку на закрытый Telegram-канал</li>
+            <li>Начинаешь — с поддержкой, в мягком темпе, но с мощным результатом</li>
+        </ol>
+        <p class="secondary-text">Остались вопросы? Напиши мне в Telegram или Instagram — я на связи и помогу выбрать формат под твой запрос</p>
+    </section>
+
+    <section id="actions">
+        <h2>Кнопки и действия</h2>
+        <div class="button-container">
+            <a href="#" class="button">Оплатить участие Light</a>
+            <a href="#" class="button">Оплатить участие Pro</a>
+            <a href="#" class="button">Получить бесплатный гайд по диастазу</a>
+            <a href="#" class="button">Посмотреть бесплатную тренировку изнутри</a>
+            <a href="#" class="button">Задать вопрос в Telegram</a>
+        </div>
+    </section>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

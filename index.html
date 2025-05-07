@@ -119,14 +119,21 @@
             align-items: flex-start;
         }
         .author-photo {
-            width: 300px;
-            height: 300px;
+            width: 600px; /* Увеличение в 2 раза */
+            height: 600px; /* Увеличение в 2 раза */
             border-radius: 10px;
             object-fit: cover;
             flex-shrink: 0;
         }
         .author-info {
             flex: 1;
+        }
+        
+        @media (max-width: 1024px) {
+            .author-photo {
+                width: 450px;
+                height: 450px;
+            }
         }
         
         @media (max-width: 700px) {
@@ -136,8 +143,8 @@
             }
             .author-photo {
                 width: 100%;
-                max-width: 300px;
-                height: 300px;
+                max-width: 350px;
+                height: 350px;
                 margin: 0 auto;
             }
         }
@@ -160,8 +167,8 @@
             text-align: center;
         }
         .testimonial-image {
-            width: 300px;
-            height: 300px; /* Такой же размер как у фото автора */
+            width: 600px; /* Увеличение в 2 раза */
+            height: 600px; /* Увеличение в 2 раза */
             border-radius: 10px;
             margin: 0 auto 15px;
             display: block;
@@ -194,11 +201,18 @@
             background-color: #c1a27d;
         }
         
+        @media (max-width: 1024px) {
+            .testimonial-image {
+                width: 450px;
+                height: 450px;
+            }
+        }
+        
         @media (max-width: 700px) {
             .testimonial-image {
                 width: 100%;
-                max-width: 300px;
-                height: 300px;
+                max-width: 350px;
+                height: 350px;
             }
         }
     </style>

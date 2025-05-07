@@ -140,6 +140,62 @@
                 margin: 0 auto;
             }
         }
+        
+        /* Стили для слайдера отзывов */
+        .testimonials-slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            margin: 20px 0;
+        }
+        .testimonials-container {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .testimonial-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            text-align: center;
+        }
+        .testimonial-image {
+            width: 300px;
+            height: auto;
+            border-radius: 10px;
+            margin: 0 auto 15px;
+            display: block;
+            object-fit: cover;
+        }
+        .testimonial-text {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-left: 3px solid #c1a27d;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        .slider-nav {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .slider-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+        .slider-dot.active {
+            background-color: #c1a27d;
+        }
+        
+        @media (max-width: 700px) {
+            .testimonial-image {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -235,14 +291,48 @@
 
     <section id="testimonials">
         <h2>Что говорят участницы</h2>
-        <div class="testimonial">
-            <p>«Наконец-то могу делать зарядку — без боли в пояснице!»</p>
-        </div>
-        <div class="testimonial">
-            <p>«Минус 3 см в талии за 3 недели. Не поверила бы, если бы не почувствовала сама!»</p>
-        </div>
-        <div class="testimonial">
-            <p>«Я снова чувствую себя красивой — не "должной", а настоящей»</p>
+        <div class="testimonials-slider">
+            <div class="testimonials-container" id="testimonialsContainer">
+                <div class="testimonial-slide">
+                    <img src="IMG_2603.PNG" alt="Отзыв участницы" class="testimonial-image">
+                    <div class="testimonial-text">
+                        <p>«Наконец-то могу делать зарядку — без боли в пояснице!»</p>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <img src="IMG_3458.PNG" alt="Отзыв участницы" class="testimonial-image">
+                    <div class="testimonial-text">
+                        <p>«Минус 3 см в талии за 3 недели. Не поверила бы, если бы не почувствовала сама!»</p>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <img src="IMG_3459.PNG" alt="Отзыв участницы" class="testimonial-image">
+                    <div class="testimonial-text">
+                        <p>«Я снова чувствую себя красивой — не "должной", а настоящей»</p>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <img src="IMG_4187.PNG" alt="Отзыв участницы" class="testimonial-image">
+                    <div class="testimonial-text">
+                        <p>«После родов думала, что никогда не верну прежнюю форму. Эта программа изменила всё!»</p>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <img src="IMG_4188.PNG" alt="Отзыв участницы" class="testimonial-image">
+                    <div class="testimonial-text">
+                        <p>«Удивительно, как мягкие упражнения могут давать такой результат!»</p>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <img src="IMG_8530.png" alt="Отзыв участницы" class="testimonial-image">
+                    <div class="testimonial-text">
+                        <p>«Спасибо за программу, которая учитывает особенности женского тела после родов»</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav" id="sliderNav">
+                <!-- Точки будут добавлены через JavaScript -->
+            </div>
         </div>
     </section>
 
@@ -287,5 +377,48 @@
             <a href="#" class="button">Задать вопрос в Telegram</a>
         </div>
     </section>
+
+    <script>
+        // Слайдер отзывов
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('testimonialsContainer');
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const nav = document.getElementById('sliderNav');
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // Создаем точки навигации
+            for (let i = 0; i < slideCount; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('slider-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.dataset.slide = i;
+                dot.addEventListener('click', function() {
+                    goToSlide(parseInt(this.dataset.slide));
+                });
+                nav.appendChild(dot);
+            }
+            
+            // Функция переключения слайдов
+            function goToSlide(n) {
+                currentSlide = (n + slideCount) % slideCount;
+                container.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Обновляем активную точку
+                document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Автоматическое переключение слайдов
+            setInterval(() => {
+                goToSlide(currentSlide + 1);
+            }, 5000);
+        });
+    </script>
 </body>
 </html>

@@ -71,31 +71,6 @@
         
         li {
             margin-bottom: 12px;
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        ul li:before {
-            content: "🌸";
-            position: absolute;
-            left: 0;
-            color: var(--secondary-color);
-        }
-        
-        ol {
-            counter-reset: item;
-        }
-        
-        ol li {
-            counter-increment: item;
-        }
-        
-        ol li:before {
-            content: counter(item) ".";
-            color: var(--primary-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
         }
         
         p {
@@ -358,10 +333,6 @@
             transition: all 0.3s ease;
         }
         
-        .slider-dot:hover {
-            transform: scale(1.3);
-        }
-        
         .slider-dot.active {
             background-color: var(--primary-color);
             transform: scale(1.3);
@@ -387,26 +358,6 @@
         section:nth-child(9) {animation-delay: 0.8s;}
         
         /* Декоративные элементы */
-        .decoration {
-            position: absolute;
-            opacity: 0.1;
-            z-index: -1;
-        }
-        
-        .heart {
-            color: var(--primary-color);
-            font-size: 20px;
-            position: absolute;
-            animation: float 4s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% {transform: translateY(0) rotate(0deg);}
-            50% {transform: translateY(-20px) rotate(10deg);}
-            100% {transform: translateY(0) rotate(0deg);}
-        }
-        
-        /* Добавляем декоративные элементы */
         body:after {
             content: "";
             position: fixed;
@@ -428,8 +379,8 @@
         <p class="secondary-text">Подходит после родов, при усталости, диастазе, болях в спине и потере энергии.</p>
         <p><strong>«Ты не обязана быть идеальной, чтобы начать. Ты достойна заботы уже сейчас.»</strong></p>
         <div class="flex-container">
-            <p>✨ Старт в любой момент</p>
-            <p>🌍 Участие из любого города</p>
+            <p>Старт в любой момент</p>
+            <p>Участие из любого города</p>
         </div>
     </header>
 
@@ -641,25 +592,6 @@
             setInterval(() => {
                 goToSlide(currentSlide + 1);
             }, 5000);
-            
-            // Добавляем декоративные элементы
-            function createHearts() {
-                const colors = ['#e83f8e', '#ff7eb9', '#ffd6e7'];
-                for (let i = 0; i < 15; i++) {
-                    const heart = document.createElement('div');
-                    heart.classList.add('heart');
-                    heart.innerHTML = '❤';
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.top = Math.random() * 100 + 'vh';
-                    heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-                    heart.style.animationDelay = Math.random() * 5 + 's';
-                    heart.style.animationDuration = (Math.random() * 6 + 4) + 's';
-                    heart.style.color = colors[Math.floor(Math.random() * colors.length)];
-                    document.body.appendChild(heart);
-                }
-            }
-            
-            createHearts();
         });
     </script>
 </body>

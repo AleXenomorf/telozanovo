@@ -247,9 +247,11 @@
         
         .testimonial-image {
             width: 100%;
+            max-width: 100%;
+            height: auto;
             max-height: 500px;
             object-fit: contain;
-            border-radius: 0;
+            border-radius: 10px;
             margin: 0 auto;
             display: block;
             pointer-events: none;
@@ -354,6 +356,7 @@
                 width: 100%;
                 max-width: 300px;
                 padding: 12px 20px;
+                margin: 10px auto;
             }
             
             .button-container {
@@ -371,6 +374,11 @@
                 max-width: 250px;
                 height: 250px;
                 margin: 0 auto;
+            }
+            
+            .testimonial-image {
+                max-height: 350px;
+                border-radius: 10px;
             }
         }
         
@@ -395,6 +403,10 @@
             .pricing-table th, .pricing-table td {
                 padding: 10px;
                 font-size: 0.9rem;
+            }
+            
+            .testimonial-image {
+                max-height: 300px;
             }
         }
     </style>
@@ -627,9 +639,9 @@
             }
             
             // Обработчики для свайпа на мобильных устройствах
-            container.addEventListener('touchstart', touchStart);
+            container.addEventListener('touchstart', touchStart, {passive: true});
             container.addEventListener('touchend', touchEnd);
-            container.addEventListener('touchmove', touchMove);
+            container.addEventListener('touchmove', touchMove, {passive: true});
             
             // Обработчики для десктопной версии
             container.addEventListener('mousedown', touchStart);

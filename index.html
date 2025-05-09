@@ -24,6 +24,7 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            touch-action: pan-y;
         }
         
         h1, h2, h3 {
@@ -96,8 +97,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.9rem;
-            width: 100%;
-            box-sizing: border-box;
+            width: auto;
+            min-width: 200px;
         }
         
         .button:hover {
@@ -221,11 +222,19 @@
             margin: 30px 0;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(232, 63, 142, 0.1);
+            touch-action: pan-y;
         }
         
         .testimonials-container {
             display: flex;
             transition: transform 0.5s ease;
+            cursor: grab;
+            user-select: none;
+        }
+        
+        .testimonials-container.grabbing {
+            cursor: grabbing;
+            transition: none;
         }
         
         .testimonial-slide {
@@ -233,6 +242,7 @@
             box-sizing: border-box;
             padding: 0;
             text-align: center;
+            flex-shrink: 0;
         }
         
         .testimonial-image {
@@ -242,6 +252,7 @@
             border-radius: 0;
             margin: 0 auto;
             display: block;
+            pointer-events: none;
         }
         
         .testimonial-comments {
@@ -340,10 +351,9 @@
             }
             
             .button {
-                display: block;
                 width: 100%;
-                margin: 10px 0;
                 max-width: 300px;
+                padding: 12px 20px;
             }
             
             .button-container {
@@ -364,9 +374,17 @@
             }
         }
         
+        @media (min-width: 769px) {
+            .button {
+                width: auto;
+                min-width: 200px;
+                max-width: 250px;
+            }
+        }
+        
         @media (max-width: 480px) {
             .button {
-                padding: 12px 20px;
+                padding: 12px 15px;
                 font-size: 0.8rem;
             }
             
@@ -566,11 +584,17 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Слайдер отзывов
             const container = document.getElementById('testimonialsContainer');
             const slides = document.querySelectorAll('.testimonial-slide');
             const nav = document.getElementById('sliderNav');
             let currentSlide = 0;
             const slideCount = slides.length;
+            let startX = 0;
+            let isDragging = false;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let animationID = 0;
             
             // Создаем точки навигации
             for (let i = 0; i < slideCount; i++) {
@@ -584,10 +608,15 @@
                 nav.appendChild(dot);
             }
             
+            // Функция перехода к слайду
             function goToSlide(n) {
                 currentSlide = (n + slideCount) % slideCount;
                 container.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
+                updateDots();
+            }
+            
+            // Обновление точек навигации
+            function updateDots() {
                 document.querySelectorAll('.slider-dot').forEach((dot, index) => {
                     if (index === currentSlide) {
                         dot.classList.add('active');
@@ -597,10 +626,97 @@
                 });
             }
             
+            // Обработчики для свайпа на мобильных устройствах
+            container.addEventListener('touchstart', touchStart);
+            container.addEventListener('touchend', touchEnd);
+            container.addEventListener('touchmove', touchMove);
+            
+            // Обработчики для десктопной версии
+            container.addEventListener('mousedown', touchStart);
+            container.addEventListener('mouseup', touchEnd);
+            container.addEventListener('mouseleave', touchEnd);
+            container.addEventListener('mousemove', touchMove);
+            
+            function touchStart(e) {
+                if (e.type === 'touchstart') {
+                    startX = e.touches[0].clientX;
+                } else {
+                    startX = e.clientX;
+                    e.preventDefault();
+                }
+                isDragging = true;
+                container.classList.add('grabbing');
+                animationID = requestAnimationFrame(animation);
+            }
+            
+            function touchEnd() {
+                isDragging = false;
+                container.classList.remove('grabbing');
+                cancelAnimationFrame(animationID);
+                
+                const movedBy = currentTranslate - prevTranslate;
+                
+                if (movedBy < -100 && currentSlide < slideCount - 1) {
+                    currentSlide += 1;
+                }
+                
+                if (movedBy > 100 && currentSlide > 0) {
+                    currentSlide -= 1;
+                }
+                
+                setPositionByIndex();
+            }
+            
+            function touchMove(e) {
+                if (isDragging) {
+                    const currentX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                    currentTranslate = prevTranslate + currentX - startX;
+                }
+            }
+            
+            function animation() {
+                setSliderPosition();
+                if (isDragging) {
+                    requestAnimationFrame(animation);
+                }
+            }
+            
+            function setSliderPosition() {
+                container.style.transform = `translateX(${currentTranslate}px)`;
+            }
+            
+            function setPositionByIndex() {
+                currentTranslate = currentSlide * -window.innerWidth;
+                prevTranslate = currentTranslate;
+                setSliderPosition();
+                updateDots();
+            }
+            
             // Автопрокрутка
-            setInterval(() => {
+            let autoSlideInterval = setInterval(() => {
                 goToSlide(currentSlide + 1);
             }, 5000);
+            
+            // Остановка автопрокрутки при взаимодействии
+            container.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            
+            container.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+            });
+            
+            container.addEventListener('touchstart', () => {
+                clearInterval(autoSlideInterval);
+            }, {passive: true});
+            
+            container.addEventListener('touchend', () => {
+                autoSlideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+            }, {passive: true});
         });
     </script>
 </body>

@@ -496,7 +496,14 @@
                 font-size: 0.9rem;
             }
         }
-    </style>
+    
+body.blurred {
+    filter: blur(5px);
+    overflow: hidden;
+    height: 100vh;
+}
+
+</style>
 </head>
 <body>
     <!-- Модальное окно -->
@@ -697,6 +704,7 @@
             // Показываем модальное окно при загрузке
             
             modalOverlay.classList.add('active');
+            body.classList.add('blurred');
 
             // Закрытие модального окна
             modalClose.addEventListener('click', function() {

@@ -28,11 +28,10 @@
             transition: filter 0.3s ease;
         }
 
-        /* body.blurred удалён */
-/* {
-            
-            
-            
+        body.blurred {
+            filter: blur(5px);
+            overflow: hidden;
+            height: 100vh;
         }
         
         h1, h2, h3 {
@@ -139,7 +138,7 @@
             border-collapse: collapse;
             margin: 20px 0;
             border-radius: 10px;
-            
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
         
@@ -222,7 +221,7 @@
         
         .testimonials-slider {
             width: 100%;
-            
+            overflow: hidden;
             position: relative;
             margin: 30px 0;
             border-radius: 15px;
@@ -496,14 +495,7 @@
                 font-size: 0.9rem;
             }
         }
-    
-body.blurred {
-    filter: blur(5px);
-    overflow: hidden;
-    height: 100vh;
-}
-
-</style>
+    </style>
 </head>
 <body>
     <!-- Модальное окно -->
@@ -702,9 +694,8 @@ body.blurred {
             const body = document.body;
 
             // Показываем модальное окно при загрузке
-            
-            modalOverlay.classList.add('active');
             body.classList.add('blurred');
+            modalOverlay.classList.add('active');
 
             // Закрытие модального окна
             modalClose.addEventListener('click', function() {

@@ -25,13 +25,16 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+        }
+
+        .main-content {
             transition: filter 0.3s ease;
         }
 
-        body.blurred {
+        .main-content.blurred {
             filter: blur(5px);
-            overflow: hidden;
-            height: 100vh;
+            pointer-events: none;
+            user-select: none;
         }
         
         h1, h2, h3 {
@@ -498,7 +501,7 @@
         }
     </style>
 </head>
-<body class="blurred">
+<body>
     <!-- Модальное окно -->
     <div class="modal-overlay active">
         <div class="modal">
@@ -511,200 +514,203 @@
         </div>
     </div>
 
-    <header>
-        <h1>Онлайн-программа «Тело заново»</h1>
-        <p>Для женщин, которые хотят восстановить здоровье, силу и фигуру — мягко, без жёстких диет и изнуряющих тренировок</p>
-        <p class="secondary-text">Подходит после родов, при усталости, диастазе, болях в спине</p>
-        <p><strong>«Ты не обязана быть идеальной, чтобы начать. Ты достойна начать уже сейчас.»</strong></p>
-        <div class="flex-container">
-            <p>Старт в любой момент</p>
-            <p>Участие из любого города</p>
-        </div>
-    </header>
+    <!-- Основное содержимое сайта -->
+    <div class="main-content blurred">
+        <header>
+            <h1>Онлайн-программа «Тело заново»</h1>
+            <p>Для женщин, которые хотят восстановить здоровье, силу и фигуру — мягко, без жёстких диет и изнуряющих тренировок</p>
+            <p class="secondary-text">Подходит после родов, при усталости, диастазе, болях в спине</p>
+            <p><strong>«Ты не обязана быть идеальной, чтобы начать. Ты достойна начать уже сейчас.»</strong></p>
+            <div class="flex-container">
+                <p>Старт в любой момент</p>
+                <p>Участие из любого города</p>
+            </div>
+        </header>
 
-    <section id="for-whom">
-        <h2>Для кого это программа</h2>
-        <p>Эта программа для тебя, если:</p>
-        <ul>
-            <li>После родов висит живот, сутулая осанка, болит спина</li>
-            <li>Хочешь вернуть стройность и лёгкость — без диет и насилия над телом</li>
-            <li>Чувствуешь постоянную усталость</li>
-            <li>Перестала чувствовать себя женщиной — только «мамой»</li>
-            <li>Секс стал механикой, а не источником удовольствия</li>
-            <li>Хочешь снова ощущать связь с телом</li>
-        </ul>
-        <p><em>Это не только про тренировки. Это про возвращение связи со своим телом.</em></p>
-    </section>
+        <section id="for-whom">
+            <h2>Для кого это программа</h2>
+            <p>Эта программа для тебя, если:</p>
+            <ul>
+                <li>После родов висит живот, сутулая осанка, болит спина</li>
+                <li>Хочешь вернуть стройность и лёгкость — без диет и насилия над телом</li>
+                <li>Чувствуешь постоянную усталость</li>
+                <li>Перестала чувствовать себя женщиной — только «мамой»</li>
+                <li>Секс стал механикой, а не источником удовольствия</li>
+                <li>Хочешь снова ощущать связь с телом</li>
+            </ul>
+            <p><em>Это не только про тренировки. Это про возвращение связи со своим телом.</em></p>
+        </section>
 
-    <section id="program-content">
-        <h2>Что внутри программы</h2>
-        <p>«Тело заново» — это:</p>
-        <ul>
-            <li>Готовый план тренировок для осанки, таза, живота, мышц кора</li>
-            <li>Видео тренировки в формате повторяй за мной</li>
-            <li>Питание без запретов — восстановление дефицитов и нормализация веса</li>
-            <li>Поддержка и мотивация через Telegram</li>
-            <li>Подсчёт КБЖУ — без срывов</li>
-        </ul>
-        <p class="bonus">Бонусы: чек-листы, рецепты и PDF-гайды</p>
-    </section>
+        <section id="program-content">
+            <h2>Что внутри программы</h2>
+            <p>«Тело заново» — это:</p>
+            <ul>
+                <li>Готовый план тренировок для осанки, таза, живота, мышц кора</li>
+                <li>Видео тренировки в формате повторяй за мной</li>
+                <li>Питание без запретов — восстановление дефицитов и нормализация веса</li>
+                <li>Поддержка и мотивация через Telegram</li>
+                <li>Подсчёт КБЖУ — без срывов</li>
+            </ul>
+            <p class="bonus">Бонусы: чек-листы, рецепты и PDF-гайды</p>
+        </section>
 
-    <section id="free-guide">
-        <h3>Бесплатный гайд и диагностика диастаза</h3>
-        <p>Хочешь начать с простого?</p>
-        <p>Получи бесплатный гайд по диастазу:</p>
-        <ul>
-            <li>Что это и как понять, есть ли он у тебя</li>
-            <li>Как провести самодиагностику дома</li>
-            <li>Какие упражнения можно, а какие — усугубляют</li>
-        </ul>
-        <p class="secondary-text">Нажми кнопку — и получи гайд в Telegram</p>
-        <div class="button-container">
-            <a href="https://drive.google.com/file/d/1J3N4xAT9UJHzfG0Ltc6BH0Ke-YjHmt46/view" class="button">Получить бесплатный гайд по диастазу</a>
-        </div>
-    </section>
+        <section id="free-guide">
+            <h3>Бесплатный гайд и диагностика диастаза</h3>
+            <p>Хочешь начать с простого?</p>
+            <p>Получи бесплатный гайд по диастазу:</p>
+            <ul>
+                <li>Что это и как понять, есть ли он у тебя</li>
+                <li>Как провести самодиагностику дома</li>
+                <li>Какие упражнения можно, а какие — усугубляют</li>
+            </ul>
+            <p class="secondary-text">Нажми кнопку — и получи гайд в Telegram</p>
+            <div class="button-container">
+                <a href="https://drive.google.com/file/d/1J3N4xAT9UJHzfG0Ltc6BH0Ke-YjHmt46/view" class="button">Получить бесплатный гайд по диастазу</a>
+            </div>
+        </section>
 
-    <section id="free-trial">
-        <h3>Бесплатная пробная тренировка</h3>
-        <p>Попробуй мой подход до покупки!</p>
-        <p>Тебя ждёт:</p>
-        <ul>
-            <li>Мягкая, но эффективная тренировка на мобильность грудного отдела и осанку</li>
-            <li>Время: 15 минут</li>
-            <li>Подходит после родов и при диастазе</li>
-            <li>Без прыжков, боли и насилия над телом</li>
-        </ul>
-        <div class="button-container">
-            <a href="https://youtu.be/HAIVI_2Xsjo?si=uxGTh8TfupYLUWOY" class="button">Посмотреть бесплатную тренировку</a>
-        </div>
-    </section>
+        <section id="free-trial">
+            <h3>Бесплатная пробная тренировка</h3>
+            <p>Попробуй мой подход до покупки!</p>
+            <p>Тебя ждёт:</p>
+            <ul>
+                <li>Мягкая, но эффективная тренировка на мобильность грудного отдела и осанку</li>
+                <li>Время: 15 минут</li>
+                <li>Подходит после родов и при диастазе</li>
+                <li>Без прыжков, боли и насилия над телом</li>
+            </ul>
+            <div class="button-container">
+                <a href="https://youtu.be/HAIVI_2Xsjo?si=uxGTh8TfupYLUWOY" class="button">Посмотреть бесплатную тренировку</a>
+            </div>
+        </section>
 
-    <section id="participation-format">
-        <h2>Формат участия</h2>
-        <table class="pricing-table">
-            <tr>
-                <th>Формат</th>
-                <th>Что входит</th>
-                <th>Стоимость</th>
-            </tr>
-            <tr>
-                <td>Light</td>
-                <td>Доступ ко всем материалам, видео, инструкциям. Без обратной связи.</td>
-                <td>15 евро/месяц (скидка 50% на подписку в первый месяц)</td>
-            </tr>
-            <tr>
-                <td>Pro</td>
-                <td>Всё из Light + проверка отчётов и поддержка 1 раз в неделю.</td>
-                <td>30 евро/месяц (скидка 50% на подписку в первый месяц)</td>
-            </tr>
-        </table>
-        <p class="secondary-text">После оплаты ты автоматически получаешь ссылку на закрытый Telegram-канал.</p>
-    </section>
+        <section id="participation-format">
+            <h2>Формат участия</h2>
+            <table class="pricing-table">
+                <tr>
+                    <th>Формат</th>
+                    <th>Что входит</th>
+                    <th>Стоимость</th>
+                </tr>
+                <tr>
+                    <td>Light</td>
+                    <td>Доступ ко всем материалам, видео, инструкциям. Без обратной связи.</td>
+                    <td>15 евро/месяц (скидка 50% на подписку в первый месяц)</td>
+                </tr>
+                <tr>
+                    <td>Pro</td>
+                    <td>Всё из Light + проверка отчётов и поддержка 1 раз в неделю.</td>
+                    <td>30 евро/месяц (скидка 50% на подписку в первый месяц)</td>
+                </tr>
+            </table>
+            <p class="secondary-text">После оплаты ты автоматически получаешь ссылку на закрытый Telegram-канал.</p>
+        </section>
 
-    <section id="testimonials">
-        <h2>Что говорят участницы</h2>
-        <div class="testimonials-slider">
-            <div class="testimonials-container" id="testimonialsContainer">
-                <div class="testimonial-slide">
-                    <img src="IMG_2603.PNG" alt="Результат участницы" class="testimonial-image">
+        <section id="testimonials">
+            <h2>Что говорят участницы</h2>
+            <div class="testimonials-slider">
+                <div class="testimonials-container" id="testimonialsContainer">
+                    <div class="testimonial-slide">
+                        <img src="IMG_2603.PNG" alt="Результат участницы" class="testimonial-image">
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="IMG_3458.PNG" alt="Результат участницы" class="testimonial-image">
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="IMG_3459.PNG" alt="Результат участницы" class="testimonial-image">
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="IMG_4187.PNG" alt="Результат участницы" class="testimonial-image">
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="IMG_4188.PNG" alt="Результат участницы" class="testimonial-image">
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="IMG_8530.png" alt="Результат участницы" class="testimonial-image">
+                    </div>
                 </div>
-                <div class="testimonial-slide">
-                    <img src="IMG_3458.PNG" alt="Результат участницы" class="testimonial-image">
-                </div>
-                <div class="testimonial-slide">
-                    <img src="IMG_3459.PNG" alt="Результат участницы" class="testimonial-image">
-                </div>
-                <div class="testimonial-slide">
-                    <img src="IMG_4187.PNG" alt="Результат участницы" class="testimonial-image">
-                </div>
-                <div class="testimonial-slide">
-                    <img src="IMG_4188.PNG" alt="Результат участницы" class="testimonial-image">
-                </div>
-                <div class="testimonial-slide">
-                    <img src="IMG_8530.png" alt="Результат участницы" class="testimonial-image">
+                <div class="slider-nav" id="sliderNav">
                 </div>
             </div>
-            <div class="slider-nav" id="sliderNav">
-            </div>
-        </div>
 
-        <div class="testimonial-comments">
-            <div class="testimonial-comment">
-                <p>«Наконец-то могу делать зарядку — без боли в пояснице!»</p>
+            <div class="testimonial-comments">
+                <div class="testimonial-comment">
+                    <p>«Наконец-то могу делать зарядку — без боли в пояснице!»</p>
+                </div>
+                <div class="testimonial-comment">
+                    <p>«Минус 3 см в талии за 3 недели. Не поверила бы, если бы не почувствовала сама!»</p>
+                </div>
+                <div class="testimonial-comment">
+                    <p>«Я снова чувствую себя красивой и настоящей»</p>
+                </div>
+                <div class="testimonial-comment">
+                    <p>«Ушло недержание и теперь я могу чихнуть и не переживать за казус от недержания»</p>
+                </div>
+                <div class="testimonial-comment">
+                    <p>«Близость с партнером снова приносит мне удовольствие»</p>
+                </div>
             </div>
-            <div class="testimonial-comment">
-                <p>«Минус 3 см в талии за 3 недели. Не поверила бы, если бы не почувствовала сама!»</p>
-            </div>
-            <div class="testimonial-comment">
-                <p>«Я снова чувствую себя красивой и настоящей»</p>
-            </div>
-            <div class="testimonial-comment">
-                <p>«Ушло недержание и теперь я могу чихнуть и не переживать за казус от недержания»</p>
-            </div>
-            <div class="testimonial-comment">
-                <p>«Близость с партнером снова приносит мне удовольствие»</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="author">
-        <h2>Автор программы</h2>
-        <div class="author-section">
-            <img src="IMG_6262.JPG" alt="Татьяна Дорохова" class="author-photo">
-            <div class="author-info">
-                <p><strong>Татьяна Дорохова</strong></p>
-                <p>Женский фитнес-тренер и нутрициолог с медицинским образованием</p>
-                <p class="secondary-text">8+ лет практики, мама, прошедшая непростой путь восстановления после тяжёлых родов</p>
-                <p>Специализация: женское здоровье, тазовое дно, диастаз, осанка, восстановление ресурсов организма</p>
+        <section id="author">
+            <h2>Автор программы</h2>
+            <div class="author-section">
+                <img src="IMG_6262.JPG" alt="Татьяна Дорохова" class="author-photo">
+                <div class="author-info">
+                    <p><strong>Татьяна Дорохова</strong></p>
+                    <p>Женский фитнес-тренер и нутрициолог с медицинским образованием</p>
+                    <p class="secondary-text">8+ лет практики, мама, прошедшая непростой путь восстановления после тяжёлых родов</p>
+                    <p>Специализация: женское здоровье, тазовое дно, диастаз, осанка, восстановление ресурсов организма</p>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="how-to-join">
-        <h2>Как попасть в программу</h2>
-        <ol>
-            <li>Выбираешь формат: Light или Pro</li>
-            <li>Оплачиваешь удобным способом</li>
-            <li>Получаешь автоматическую ссылку на закрытый Telegram-канал</li>
-            <li>Начинаешь — с поддержкой, в мягком темпе, но с мощным результатом</li>
-        </ol>
-        <p class="secondary-text">Остались вопросы? Напиши мне в Telegram или Instagram — я на связи и помогу выбрать формат под твой запрос</p>
-        
-        <div class="social-icons">
-            <a href="https://www.instagram.com/tat.wellnesscoach/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://t.me/tatwellnescoach" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
-        </div>
-    </section>
+        <section id="how-to-join">
+            <h2>Как попасть в программу</h2>
+            <ol>
+                <li>Выбираешь формат: Light или Pro</li>
+                <li>Оплачиваешь удобным способом</li>
+                <li>Получаешь автоматическую ссылку на закрытый Telegram-канал</li>
+                <li>Начинаешь — с поддержкой, в мягком темпе, но с мощным результатом</li>
+            </ol>
+            <p class="secondary-text">Остались вопросы? Напиши мне в Telegram или Instagram — я на связи и помогу выбрать формат под твой запрос</p>
+            
+            <div class="social-icons">
+                <a href="https://www.instagram.com/tat.wellnesscoach/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="https://t.me/tatwellnescoach" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
+            </div>
+        </section>
 
-    <section id="actions">
-        <h2>Начни своё преображение сегодня</h2>
-        <div class="button-container">
-            <a href="https://t.me/tribute/app?startapp=su2x" class="button">Оплатить участие Light</a>
-            <a href="https://t.me/tribute/app?startapp=su3z" class="button">Оплатить участие Pro</a>
-            <a href="https://drive.google.com/file/d/1J3N4xAT9UJHzfG0Ltc6BH0Ke-YjHmt46/view" class="button">Получить бесплатный гайд по диастазу</a>
-            <a href="https://youtu.be/HAIVI_2Xsjo?si=uxGTh8TfupYLUWOY" class="button">Посмотреть бесплатную тренировку</a>
-            <a href="https://t.me/tatwellnescoach" class="button">Задать вопрос в Telegram</a>
-        </div>
-    </section>
+        <section id="actions">
+            <h2>Начни своё преображение сегодня</h2>
+            <div class="button-container">
+                <a href="https://t.me/tribute/app?startapp=su2x" class="button">Оплатить участие Light</a>
+                <a href="https://t.me/tribute/app?startapp=su3z" class="button">Оплатить участие Pro</a>
+                <a href="https://drive.google.com/file/d/1J3N4xAT9UJHzfG0Ltc6BH0Ke-YjHmt46/view" class="button">Получить бесплатный гайд по диастазу</a>
+                <a href="https://youtu.be/HAIVI_2Xsjo?si=uxGTh8TfupYLUWOY" class="button">Посмотреть бесплатную тренировку</a>
+                <a href="https://t.me/tatwellnescoach" class="button">Задать вопрос в Telegram</a>
+            </div>
+        </section>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Модальное окно
             const modalOverlay = document.querySelector('.modal-overlay');
             const modalClose = document.querySelector('.modal-close');
-            const body = document.body;
+            const mainContent = document.querySelector('.main-content');
 
             // Закрытие модального окна
             modalClose.addEventListener('click', function() {
                 modalOverlay.classList.remove('active');
-                body.classList.remove('blurred');
+                mainContent.classList.remove('blurred');
             });
 
             // Закрытие при клике вне модального окна
             modalOverlay.addEventListener('click', function(e) {
                 if (e.target === modalOverlay) {
                     modalOverlay.classList.remove('active');
-                    body.classList.remove('blurred');
+                    mainContent.classList.remove('blurred');
                 }
             });
 

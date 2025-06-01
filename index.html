@@ -25,6 +25,13 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            transition: filter 0.3s ease;
+        }
+
+        body.blurred {
+            filter: blur(5px);
+            overflow: hidden;
+            height: 100vh;
         }
         
         h1, h2, h3 {
@@ -339,6 +346,78 @@
             transform: scale(1.2);
             color: var(--secondary-color);
         }
+
+        /* Модальное окно */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--light-text);
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--primary-color);
+        }
+
+        .modal-content {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .modal-link {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(232, 63, 142, 0.3);
+        }
+
+        .modal-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(232, 63, 142, 0.4);
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        }
         
         @media (max-width: 768px) {
             body {
@@ -377,6 +456,11 @@
                 height: 250px;
                 margin: 0 auto;
             }
+
+            .modal {
+                padding: 20px;
+                width: 95%;
+            }
         }
         
         @media (max-width: 480px) {
@@ -401,10 +485,31 @@
             .social-icon {
                 font-size: 1.8rem;
             }
+
+            .modal-content {
+                font-size: 1rem;
+            }
+
+            .modal-link {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Модальное окно -->
+    <div class="modal-overlay active">
+        <div class="modal">
+            <span class="modal-close">&times;</span>
+            <div class="modal-content">
+                <h3>Пройди тест по диастазу</h3>
+                <p>Узнай состояние своих мышц живота всего за 5 минут</p>
+                <a href="https://drive.google.com/file/d/1J3N4xAT9UJHzfG0Ltc6BH0Ke-YjHmt46/view" class="modal-link">Пройти тест</a>
+            </div>
+        </div>
+    </div>
+
     <header>
         <h1>Онлайн-программа «Тело заново»</h1>
         <p>Для женщин, которые хотят восстановить здоровье, силу и фигуру — мягко, без жёстких диет и изнуряющих тренировок</p>
@@ -583,6 +688,30 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Модальное окно
+            const modalOverlay = document.querySelector('.modal-overlay');
+            const modalClose = document.querySelector('.modal-close');
+            const body = document.body;
+
+            // Показываем модальное окно при загрузке
+            body.classList.add('blurred');
+            modalOverlay.classList.add('active');
+
+            // Закрытие модального окна
+            modalClose.addEventListener('click', function() {
+                modalOverlay.classList.remove('active');
+                body.classList.remove('blurred');
+            });
+
+            // Закрытие при клике вне модального окна
+            modalOverlay.addEventListener('click', function(e) {
+                if (e.target === modalOverlay) {
+                    modalOverlay.classList.remove('active');
+                    body.classList.remove('blurred');
+                }
+            });
+
+            // Слайдер отзывов
             const container = document.getElementById('testimonialsContainer');
             const slides = document.querySelectorAll('.testimonial-slide');
             const nav = document.getElementById('sliderNav');

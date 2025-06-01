@@ -378,6 +378,7 @@
             position: relative;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             text-align: center;
+            filter: none !important;
         }
 
         .modal-close {
@@ -497,7 +498,7 @@
         }
     </style>
 </head>
-<body>
+<body class="blurred">
     <!-- Модальное окно -->
     <div class="modal-overlay active">
         <div class="modal">
@@ -692,10 +693,6 @@
             const modalOverlay = document.querySelector('.modal-overlay');
             const modalClose = document.querySelector('.modal-close');
             const body = document.body;
-
-            // Показываем модальное окно при загрузке
-            body.classList.add('blurred');
-            modalOverlay.classList.add('active');
 
             // Закрытие модального окна
             modalClose.addEventListener('click', function() {
